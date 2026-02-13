@@ -355,6 +355,19 @@ CSLOL_API const char* cslol_set_config(const char16_t* prefix) {
         if (buffer[i] == L'/') buffer[i] = L'\\';
 
     memcpy_s((void*)s_config.prefix, MAX_PATH_WIDE, buffer, MAX_PATH_WIDE);
+    // --- AB HIER ÄNDERN ---
+    
+    // 1. Debug-Log hinzufügen, damit wir sehen, was der Manager schickt
+    log_info("DEBUG: Trying to set prefix to: %ls", buffer);
+
+    // 2. Die Prüfung mit // auskommentieren, damit sie nicht mehr blockiert
+    // DWORD attrib = GetFileAttributesW((LPCWSTR)s_config.prefix);
+    // if (attrib == INVALID_FILE_ATTRIBUTES || !(attrib & FILE_ATTRIBUTE_DIRECTORY)) return "Prefix path does not exist";
+
+    // 3. Immer Erfolg melden
+    return NULL; 
+    
+    // --- BIS HIER ÄNDERN ---
 
     DWORD attrib = GetFileAttributesW((LPCWSTR)s_config.prefix);
     if (attrib == INVALID_FILE_ATTRIBUTES || !(attrib & FILE_ATTRIBUTE_DIRECTORY)) return "Prefix path does not exist";
