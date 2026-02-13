@@ -8,7 +8,7 @@ jobs:
     - name: "Clone source"
       uses: actions/checkout@v4
       with:
-        submodules: 'true'
+        submodules: 'recursive'
     - name: "Setup msvc"
       uses: ilammy/msvc-dev-cmd@v1
     - name: "Build"
