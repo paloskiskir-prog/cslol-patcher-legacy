@@ -369,10 +369,6 @@ CSLOL_API const char* cslol_set_config(const char16_t* prefix) {
     
     // --- BIS HIER ÄNDERN ---
 
-    DWORD attrib = GetFileAttributesW((LPCWSTR)s_config.prefix);
-    if (attrib == INVALID_FILE_ATTRIBUTES || !(attrib & FILE_ATTRIBUTE_DIRECTORY)) return "Prefix path does not exist";
-
-    return NULL;
 }
 
 CSLOL_API const char* cslol_set_flags(cslol_hook_flags flags) {
